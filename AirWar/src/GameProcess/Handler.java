@@ -5,6 +5,9 @@ import GameObjects.ObjetoDeJuego;
 import java.awt.*;
 import java.util.LinkedList;
 
+/**
+ * Esta clase se encarga de hacer el manejo de los objetos en el juego
+ */
 public class Handler {
     LinkedList<ObjetoDeJuego>  objetosEnJuego = new LinkedList<ObjetoDeJuego>();
 

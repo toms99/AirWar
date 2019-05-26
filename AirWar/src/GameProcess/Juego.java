@@ -7,6 +7,11 @@ import GameObjects.Jugador;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
+/**
+ * Se encarga de toda la logica de graficos del juego.
+ * Aqui se une el programa.
+ *
+ */
 public class Juego extends Canvas implements Runnable {
     private static final int  altura = 600, ancho = (altura * 16) / 9;
 
@@ -15,7 +20,9 @@ public class Juego extends Canvas implements Runnable {
 
     private Handler handler;
 
-
+    /**
+     * Constructor
+     */
     public Juego(){
         new Window(ancho, altura, "AirWar", this);
         handler = new Handler();
@@ -41,6 +48,10 @@ public class Juego extends Canvas implements Runnable {
         }
     }
 
+    /**
+     * Loop del juego.
+     * Este loop en particular es bastante popular.
+     */
     @Override
     public void run() {
         long ultimaVez = System.nanoTime();
@@ -74,6 +85,9 @@ public class Juego extends Canvas implements Runnable {
         handler.tick();
     }
 
+    /**
+     * Encargado de mostrar los objetos en el juego.
+     */
     private void render(){
         BufferStrategy bufferStrategy = this.getBufferStrategy();
         if(bufferStrategy == null){

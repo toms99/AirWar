@@ -7,6 +7,12 @@ public abstract class ObjetoDeJuego {
     protected ID id;
     protected int velX, velY;
 
+    /**
+     * Constructor
+     * @param x
+     * @param y
+     * @param id
+     */
     public ObjetoDeJuego(int x, int y, ID id){
         this.x = x;
         this.y = y;
