@@ -1,4 +1,6 @@
-package GUI;
+package GameProcess;
+
+import GUI.Window;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -14,13 +16,13 @@ public class Juego extends Canvas implements Runnable {
         new Window(ancho, altura, "AirWar", this);
     }
 
-    private synchronized void iniciar(){
+    public synchronized void iniciar(){
         hilo = new Thread(this);
         hilo.start();
         corriendo = true;
     }
 
-    private synchronized void detener(){
+    public synchronized void detener(){
         try{
             hilo.join();
             corriendo = false;
