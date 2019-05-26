@@ -1,6 +1,8 @@
 package GameProcess;
 
 import GUI.Window;
+import GameObjects.ID;
+import GameObjects.Jugador;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -11,9 +13,15 @@ public class Juego extends Canvas implements Runnable {
     private Thread hilo;
     private boolean corriendo = false;
 
+    private Handler handler;
+
 
     public Juego(){
         new Window(ancho, altura, "AirWar", this);
+        handler = new Handler();
+        handler.addObjeto(new Jugador(100,0, ID.Jugador));
+
+
     }
 
     public synchronized void iniciar(){
@@ -61,7 +69,7 @@ public class Juego extends Canvas implements Runnable {
     }
 
     private void tick(){
-
+        handler.tick();
     }
 
     private void render(){
@@ -74,6 +82,8 @@ public class Juego extends Canvas implements Runnable {
 
         graphics.setColor(Color.black);
         graphics.fillRect(0,0, ancho, altura);
+
+        handler.render(graphics);
 
         graphics.dispose();
         bufferStrategy.show();

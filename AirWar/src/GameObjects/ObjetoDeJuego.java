@@ -14,7 +14,7 @@ public abstract class ObjetoDeJuego {
     }
 
     public abstract void thick();
-    public abstract void rener(Graphics graphics);
+    public abstract void render(Graphics graphics);
 
     public int getX() {
         return x;
