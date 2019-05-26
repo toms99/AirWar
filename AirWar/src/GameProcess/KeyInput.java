@@ -2,6 +2,7 @@ package GameProcess;
 
 import GameObjects.ID;
 import GameObjects.ObjetoDeJuego;
+import GameObjects.Shot;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -24,6 +25,10 @@ public class KeyInput extends KeyAdapter {
                 Random random = new Random();
                 if (tecla == KeyEvent.VK_RIGHT) objeto.setVelX(random.nextInt(20));
                 if (tecla == KeyEvent.VK_LEFT) objeto.setVelX(-1*random.nextInt(20));
+                if (tecla == KeyEvent.VK_SPACE) {
+                    ObjetoDeJuego bala = new Shot(objeto.getX(), objeto.getY(), ID.Bala);
+                    handler.addObjeto(bala);
+                }
 
             }
         }

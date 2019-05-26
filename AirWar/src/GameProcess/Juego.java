@@ -1,11 +1,13 @@
 package GameProcess;
 
+import GUI.MediaSources;
 import GUI.Window;
 import GameObjects.ID;
 import GameObjects.Jugador;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.io.IOException;
 
 /**
  * Se encarga de toda la logica de graficos del juego.
@@ -28,7 +30,7 @@ public class Juego extends Canvas implements Runnable {
         this.addKeyListener(new KeyInput(handler));
 
         new Window(ancho, altura, "AirWar", this);
-        handler.addObjeto(new Jugador(50,getAltura() - 100,ID.Jugador));
+        handler.addObjeto(new Jugador(50,getAltura() - 125,ID.Jugador));
     }
 
     public synchronized void start(){
@@ -86,7 +88,8 @@ public class Juego extends Canvas implements Runnable {
     /**
      * Encargado de mostrar los objetos en el juego.
      */
-    private void render(){
+    private void render() {
+        MediaSources mediaSources = new MediaSources();
         BufferStrategy bufferStrategy = this.getBufferStrategy();
         if(bufferStrategy == null){
             this.createBufferStrategy(3);
@@ -94,11 +97,11 @@ public class Juego extends Canvas implements Runnable {
         }
         Graphics graphics = bufferStrategy.getDrawGraphics();
 
-        graphics.setColor(Color.black);
         graphics.fillRect(0,0, ancho, altura);
+        graphics.setColor(Color.black);
+        graphics.drawImage(mediaSources.addImage("/Map.png"), 0 , 0, null);
 
         handler.render(graphics);
-
         graphics.dispose();
         bufferStrategy.show();
     }

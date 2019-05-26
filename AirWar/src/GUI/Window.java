@@ -8,6 +8,7 @@ import java.awt.*;
 public class Window extends Canvas {
     public Window(int ancho, int altura, String titulo, Juego juego){
         JFrame marco = new JFrame(titulo);
+        MediaSources media = new MediaSources();
 
         marco.setPreferredSize(new Dimension(ancho, altura));
         marco.setMaximumSize(new Dimension(ancho, altura));

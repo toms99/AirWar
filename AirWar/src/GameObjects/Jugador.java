@@ -1,5 +1,6 @@
 package GameObjects;
 
+import GUI.MediaSources;
 import GameProcess.Juego;
 
 import java.awt.*;
@@ -34,7 +35,8 @@ public class Jugador extends ObjetoDeJuego{
      */
     @Override
     public void render(Graphics graphics) {
+        MediaSources mediaSources = new MediaSources();
         graphics.setColor(Color.white);
-        graphics.fillRect(x,y,40,40);
+        graphics.drawImage(mediaSources.addImage("/Plane1.png"), x , y, null);
     }
 }
