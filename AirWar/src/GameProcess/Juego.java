@@ -19,7 +19,9 @@ public class Juego extends Canvas implements Runnable {
     public Juego(){
         new Window(ancho, altura, "AirWar", this);
         handler = new Handler();
-        handler.addObjeto(new Jugador(100,0, ID.Jugador));
+        handler.addObjeto(new Jugador(10,10,ID.Jugador));
+        handler.addObjeto(new Jugador(100,10,ID.Jugador));
+        handler.addObjeto(new Jugador(50,10,ID.Jugador));
 
 
     }
