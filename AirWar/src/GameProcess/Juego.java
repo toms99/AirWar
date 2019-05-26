@@ -24,22 +24,20 @@ public class Juego extends Canvas implements Runnable {
      * Constructor
      */
     public Juego(){
-        new Window(ancho, altura, "AirWar", this);
         handler = new Handler();
-        handler.addObjeto(new Jugador(10,10,ID.Jugador));
-        handler.addObjeto(new Jugador(100,10,ID.Jugador));
-        handler.addObjeto(new Jugador(50,10,ID.Jugador));
+        this.addKeyListener(new KeyInput(handler));
 
-
+        new Window(ancho, altura, "AirWar", this);
+        handler.addObjeto(new Jugador(50,getAltura() - 100,ID.Jugador));
     }
 
-    public synchronized void iniciar(){
+    public synchronized void start(){
         hilo = new Thread(this);
         hilo.start();
         corriendo = true;
     }
 
-    public synchronized void detener(){
+    public synchronized void stop(){
         try{
             hilo.join();
             corriendo = false;
@@ -74,11 +72,11 @@ public class Juego extends Canvas implements Runnable {
 
             if (System.currentTimeMillis() - timer > 1000){
                 timer += 1000;
-                System.out.println("FPS: " + frames);
+                //System.out.println("FPS: " + frames);
                 frames = 0;
             }
         }
-        detener();
+        stop();
     }
 
     private void tick(){
@@ -107,6 +105,13 @@ public class Juego extends Canvas implements Runnable {
 
     public static void main(String[] args) {
         new Juego();
+    }
 
+    public static int getAncho() {
+        return ancho;
+    }
+
+    public static int getAltura() {
+        return altura;
     }
 }

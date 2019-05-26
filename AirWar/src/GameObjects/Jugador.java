@@ -1,6 +1,9 @@
 package GameObjects;
 
+import GameProcess.Juego;
+
 import java.awt.*;
+import java.util.Random;
 
 public class Jugador extends ObjetoDeJuego{
 
@@ -12,8 +15,7 @@ public class Jugador extends ObjetoDeJuego{
      */
     public Jugador(int x, int y, ID id){
         super(x, y, id);
-        velX = 1;
-        velY = 1;
+        velY = 0;
     }
 
     /**
@@ -21,8 +23,9 @@ public class Jugador extends ObjetoDeJuego{
      */
     @Override
     public void thick() {
-        x += velX;
-        y += velY;
+        x += velX; y += velY;
+        if ((x <= 0) || (x >= Juego.getAncho())) velX *= -1;
+        else if ((y <= 0) || (y >=  Juego.getAltura())) y = 1;
     }
 
     /**

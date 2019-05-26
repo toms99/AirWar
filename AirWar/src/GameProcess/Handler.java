@@ -9,7 +9,7 @@ import java.util.LinkedList;
  * Esta clase se encarga de hacer el manejo de los objetos en el juego
  */
 public class Handler {
-    LinkedList<ObjetoDeJuego>  objetosEnJuego = new LinkedList<ObjetoDeJuego>();
+    private LinkedList<ObjetoDeJuego>  objetosEnJuego = new LinkedList<ObjetoDeJuego>();
 
     public void tick(){
         for (int i = 0; i < objetosEnJuego.size(); i++){
@@ -33,5 +33,9 @@ public class Handler {
 
     public void removeObjeto(ObjetoDeJuego objeto){
         this.objetosEnJuego.remove(objeto);
+    }
+
+    public LinkedList<ObjetoDeJuego> getObjetosEnJuego() {
+        return objetosEnJuego;
     }
 }

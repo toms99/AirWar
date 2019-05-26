@@ -20,6 +20,6 @@ public class Window extends Canvas {
         marco.add(juego);
         marco.setVisible(true);
 
-        juego.iniciar();
+        juego.start();
     }
 }
