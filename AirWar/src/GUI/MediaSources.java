@@ -9,12 +9,12 @@ public class MediaSources {
 
 
     public BufferedImage addImage(String path)  {
-        BufferedImage mapa = null;
+        BufferedImage image = null;
         try {
-            mapa = ImageIO.read(getClass().getResourceAsStream(path));
+            image = ImageIO.read(getClass().getResourceAsStream(path));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return mapa;
+        return image;
     }
 }

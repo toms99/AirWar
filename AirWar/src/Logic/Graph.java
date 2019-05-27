@@ -1,8 +1,5 @@
-package Structures;
+package Logic;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
 import static java.lang.String.format;

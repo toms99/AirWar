@@ -1,4 +1,4 @@
-package Structures;
+package Logic;
 
 /**
  * Implementación de un nodo en el grafo ponderado dirigido

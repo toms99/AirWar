@@ -1,4 +1,4 @@
-package Structures;
+package Logic;
 
 
 public class Waze {

@@ -34,6 +34,9 @@ public class Juego extends Canvas implements Runnable {
         handler.addObjeto(new Jugador(50,getAltura() - 125,ID.Jugador));
         handler.addObjeto(new Base(0,0,ID.Aeropuerto));
         handler.addObjeto(new Base(0,0,ID.Aeropuerto));
+        handler.addObjeto(new Base(0,0,ID.Portaaviones));
+        handler.addObjeto(new Base(0,0,ID.Portaaviones));
+        handler.addObjeto(new Base(0,0,ID.Portaaviones));
 
     }
 
