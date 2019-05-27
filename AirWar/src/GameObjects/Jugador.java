@@ -7,6 +7,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class Jugador extends ObjetoDeJuego{
+    int anchoMaximo = 827;
 
     /**
      * Constructor del objeto Jugador
@@ -25,7 +26,7 @@ public class Jugador extends ObjetoDeJuego{
     @Override
     public void thick() {
         x += velX; y += velY;
-        if ((x <= 0) || (x >= Juego.getAncho())) velX *= -1;
+        if ((x <= 0) || (x >= anchoMaximo)) velX *= -1;
         else if ((y <= 0) || (y >=  Juego.getAltura())) y = 1;
     }
 

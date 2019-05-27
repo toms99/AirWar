@@ -106,7 +106,10 @@ public class Juego extends Canvas implements Runnable {
 
         graphics.fillRect(0,0, ancho, altura);
         graphics.setColor(Color.black);
+        graphics.drawImage(mediaSources.addImage("/Wallpaper.png"), 0 , 0, null);
         graphics.drawImage(mediaSources.addImage("/Map.png"), 0 , 0, null);
+        graphics.drawImage(mediaSources.addImage("/Grid.png"), 0 , 0, null);
+
 
         handler.render(graphics);
         graphics.dispose();
