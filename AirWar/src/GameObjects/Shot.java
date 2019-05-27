@@ -11,7 +11,7 @@ public class Shot extends ObjetoDeJuego {
         super(x, y, id);
         Random random = new Random();
         velX = 0;
-        velY = random.nextInt(15);
+        velY = 5 + random.nextInt(15);
     }
     @Override
     public void thick() {

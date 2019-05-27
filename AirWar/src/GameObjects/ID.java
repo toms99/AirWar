@@ -3,5 +3,7 @@ package GameObjects;
 public enum ID {
     Jugador(),
     Avion(),
-    Bala();
+    Bala(),
+    Portaaviones(),
+    Aeropuerto();
 }
