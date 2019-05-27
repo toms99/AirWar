@@ -31,11 +31,17 @@ public class BasePosition {
         rangosDePosicionXSuperior.add(90);
         rangosDePosicionXSuperior.add(381);
         rangosDePosicionXSuperior.add(234);
+        rangosDePosicionXSuperior.add(0);
+        rangosDePosicionXSuperior.add(0);
 
         rangosDePosicionXInferior.add(190);
         rangosDePosicionXInferior.add(55);
         rangosDePosicionXInferior.add(241);
         rangosDePosicionXInferior.add(50);
+        rangosDePosicionXInferior.add(0);
+        rangosDePosicionXInferior.add(0);
+
+
 
         rangosDePosicionYSuperior.add(100);
         rangosDePosicionYSuperior.add(50);
@@ -71,6 +77,9 @@ public class BasePosition {
         rangosDePosicionXSuperior.add(134);
         rangosDePosicionXSuperior.add(470);
         rangosDePosicionXSuperior.add(99);
+        rangosDePosicionXSuperior.add(0);
+        rangosDePosicionXSuperior.add(0);
+
 
         rangosDePosicionXInferior.add(30);
         rangosDePosicionXInferior.add(146);
@@ -78,7 +87,8 @@ public class BasePosition {
         rangosDePosicionXInferior.add(157);
         rangosDePosicionXInferior.add(125);
         rangosDePosicionXInferior.add(196);
-
+        rangosDePosicionXInferior.add(0);
+        rangosDePosicionXInferior.add(0);
 
         rangosDePosicionYSuperior.add(150);
         rangosDePosicionYSuperior.add(30);
