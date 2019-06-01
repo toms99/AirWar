@@ -1,5 +1,7 @@
 package Logic;
 
+import GameObjects.ID;
+
 /**
  * Implementación de un nodo en el grafo ponderado dirigido
  * Un Nodo representa una ubicación en el mapa.<br>
@@ -12,16 +14,18 @@ public class Node {
 
   // Atributos
   private int id,x,y;
-  private String name;
+  private ID name;
 
   /**
    * Constructor de un nodo
    * @param id : Identificador del nodo en la matriz de adyacencia
    * @param name : Nombre del lugar que representa el nodo
    */
-  public Node(int id, String name){
+  public Node(int id, ID name, int x, int y){
     this.id = id;
     this.name = name;
+    this.x = x;
+    this.y = y;
   }
 
   // Getters & Setters
@@ -55,7 +59,7 @@ public class Node {
 	* Returns value of name
 	* @return
 	*/
-	public String getName() {
+	public ID getName() {
 		return name;
 	}
 

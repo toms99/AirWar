@@ -48,8 +48,6 @@ public class BasePosition {
         return posicionesPintadas;
     }
 
-    public ArrayList<Integer> getPosicionesTransparentes() {
-        return posicionesTransparentes;
-    }
+    public ArrayList<Integer> getPosicionesTransparentes() { return posicionesTransparentes; }
 
 }

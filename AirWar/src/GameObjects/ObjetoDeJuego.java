@@ -6,6 +6,7 @@ public abstract class ObjetoDeJuego {
     protected int x, y;
     protected ID id;
     protected int velX, velY;
+    protected int salud;
 
     /**
      * Constructor
@@ -60,5 +61,13 @@ public abstract class ObjetoDeJuego {
 
     public void setVelY(int velY) {
         this.velY = velY;
+    }
+
+    public int getSalud() {
+        return salud;
+    }
+
+    public void setSalud(int salud) {
+        this.salud = salud;
     }
 }

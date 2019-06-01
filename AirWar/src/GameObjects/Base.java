@@ -2,50 +2,74 @@ package GameObjects;
 
 import GUI.MediaSources;
 import Logic.BasePosition;
+import Logic.Node;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Random;
 
 public class Base extends ObjetoDeJuego {
     Random random = new Random();
     MediaSources mediaSources = new MediaSources();
-    BufferedImage mapa = mediaSources.addImage("/Map.png");
     BasePosition generadorDePosicion = new BasePosition();
+    Node nodo;
+    private int intID = -1;
+
     ArrayList<Integer> posicionesTransparentes = generadorDePosicion.getPosicionesTransparentes();
     ArrayList<Integer> posicionesPintadas = generadorDePosicion.getPosicionesPintadas();
 
+    BufferedImage mapa = mediaSources.addImage("/Map.png");
+
+
+    /**
+     * Constructor
+     * @param x
+     * @param y
+     * @param id
+     */
     public Base(int x, int y, ID id) {
         super(x, y, id);
         velX = 0;
         velY = 0;
         this.definirPosicionesDeBase();
+
+        nodo = new Node(intID, id, x, y);
+
     }
 
+    private int definirID(){
+        intID++;
+        return intID;
+    }
+    /**
+     * Encargado de definir las posiciones random de un objeto base o portaavion
+     * a partir de otra funcion que las establece. Este solo las define segun ID.
+     */
     public void definirPosicionesDeBase(){
         generadorDePosicion.obtenerPixelesTransparentes(mapa);
         if (this.getId() == ID.Portaaviones){
-            int ran = 2 + random.nextInt(posicionesTransparentes.size());
-            if (ran%2 == 1){
-                this.setY(posicionesTransparentes.get(ran));
-                this.setX(posicionesTransparentes.get(ran-1));
-            } else {
-                this.setY(posicionesTransparentes.get(ran+1));
-                this.setX(posicionesTransparentes.get(ran));
-            }
+            establecerPosiciones(posicionesTransparentes);
         } else {
-            int ran = 2 + random.nextInt(posicionesPintadas.size());
-            if (ran%2 == 1){
-                this.setY(posicionesPintadas.get(ran));
-                this.setX(posicionesPintadas.get(ran-1));
-            } else {
-                this.setY(posicionesPintadas.get(ran+1));
-                this.setX(posicionesPintadas.get(ran));
-            }
-
+            establecerPosiciones(posicionesPintadas);
         }
         System.out.println(this.getId() + ": " + this.getX() + ", " + this.getY());
+    }
+
+    /**
+     * Encargado de establecer las posiciones de las bases.
+     * @param listaDePxeles
+     */
+    private void establecerPosiciones(ArrayList<Integer> listaDePxeles){
+        int ran = 2 + random.nextInt(listaDePxeles.size());
+        if (ran%2 == 1){
+            this.setY(listaDePxeles.get(ran));
+            this.setX(listaDePxeles.get(ran-1));
+        } else {
+            this.setY(listaDePxeles.get(ran+1));
+            this.setX(listaDePxeles.get(ran));
+        }
     }
 
 

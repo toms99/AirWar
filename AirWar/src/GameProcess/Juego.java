@@ -5,9 +5,11 @@ import GUI.Window;
 import GameObjects.Base;
 import GameObjects.ID;
 import GameObjects.Jugador;
+import Logic.BasePosition;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -22,6 +24,7 @@ public class Juego extends Canvas implements Runnable {
     private boolean corriendo = false;
 
     private Handler handler;
+    MediaSources mediaSources = new MediaSources();
 
     /**
      * Constructor
@@ -31,6 +34,9 @@ public class Juego extends Canvas implements Runnable {
         this.addKeyListener(new KeyInput(handler));
 
         new Window(ancho, altura, "AirWar", this);
+
+
+
         handler.addObjeto(new Jugador(50,getAltura() - 125,ID.Jugador));
         handler.addObjeto(new Base(0,0,ID.Aeropuerto));
         handler.addObjeto(new Base(0,0,ID.Aeropuerto));
@@ -61,6 +67,7 @@ public class Juego extends Canvas implements Runnable {
      */
     @Override
     public void run() {
+        this.requestFocus();
         long ultimaVez = System.nanoTime();
         double cantidadDeTicks = 60.0;
         double ns = 1000000000 / cantidadDeTicks;
@@ -96,7 +103,6 @@ public class Juego extends Canvas implements Runnable {
      * Encargado de mostrar los objetos en el juego.
      */
     private void render() {
-        MediaSources mediaSources = new MediaSources();
         BufferStrategy bufferStrategy = this.getBufferStrategy();
         if(bufferStrategy == null){
             this.createBufferStrategy(3);
@@ -109,6 +115,7 @@ public class Juego extends Canvas implements Runnable {
         graphics.drawImage(mediaSources.addImage("/Wallpaper.png"), 0 , 0, null);
         graphics.drawImage(mediaSources.addImage("/Map.png"), 0 , 0, null);
         graphics.drawImage(mediaSources.addImage("/Grid.png"), 0 , 0, null);
+
 
 
         handler.render(graphics);
