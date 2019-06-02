@@ -75,14 +75,14 @@ public class SingletonGraph {
      */
     private SingletonGraph() {
         if (graph != null){
-            throw new RuntimeException("Use getInstance() method to get the single instance.");
+            throw new RuntimeException("Use  metodo getInstance() para obtener la unica instacia existente.");
         } else {
             SingletonGraph.getInstance().initGraph();
         }
     }
 
     public static SingletonGraph getInstance() {
-        if (graph == null) { //if there is no instance available... create new one
+        if (graph == null) { //Si no se ha crado la instancia, cree una.
             synchronized (SingletonGraph.class) {
                 if (graph == null) {
                     graph = new SingletonGraph();
@@ -93,7 +93,7 @@ public class SingletonGraph {
     }
 
     /**
-     * Create string representation of Graph for printing
+     * Crea una visualizacion String del grafo.
      * @return
      */
     @Override
@@ -118,7 +118,7 @@ public class SingletonGraph {
     }
 
     /**
-     * Create string representation of Graph Nodes for printing
+     * Hace print de los Nodes
      * @return
      */
     public String showNodes() {

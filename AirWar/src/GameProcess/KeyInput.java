@@ -10,6 +10,9 @@ import java.util.Random;
 
 public class KeyInput extends KeyAdapter {
     private Handler handler;
+    private int ultimaTecla = -1;
+    double time;
+
 
     public KeyInput(Handler handler){
         this.handler = handler;
@@ -20,22 +23,29 @@ public class KeyInput extends KeyAdapter {
 
         for(int i = 0; i < handler.getObjetosEnJuego().size(); i++){
             ObjetoDeJuego objeto = handler.getObjetosEnJuego().get(i);
-            if (objeto.getId() == ID.Jugador){
+            if (objeto.getId() == ID.Jugador) {
                 // key events para Jugador
-                Random random = new Random();
-                if (tecla == KeyEvent.VK_RIGHT) objeto.setVelX(random.nextInt(20));
-                if (tecla == KeyEvent.VK_LEFT) objeto.setVelX(-1*random.nextInt(20));
                 if (tecla == KeyEvent.VK_SPACE) {
-                    ObjetoDeJuego bala = new Shot(objeto.getX(), objeto.getY(), ID.Bala);
-                    handler.addObjeto(bala);
+                    time += (System.currentTimeMillis()/1000000000);
                 }
-
+                ultimaTecla = tecla;
             }
         }
-
     }
 
     public void keyReleased(KeyEvent event){
         int tecla = event.getKeyCode();
+
+        for(int i = 0; i < handler.getObjetosEnJuego().size(); i++) {
+            ObjetoDeJuego objeto = handler.getObjetosEnJuego().get(i);
+            if (objeto.getId() == ID.Jugador) {
+                if (tecla == KeyEvent.VK_SPACE && ultimaTecla == tecla){
+                    ObjetoDeJuego bala = new Shot(objeto.getX(), objeto.getY(), ID.Bala, time);
+                    handler.addObjeto(bala);
+                    time = 0;
+                }
+            }
+        }
+        ultimaTecla = -1;
     }
 }

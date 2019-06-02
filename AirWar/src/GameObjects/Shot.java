@@ -4,14 +4,17 @@ import GUI.MediaSources;
 
 import java.awt.*;
 import java.util.Random;
+import java.util.function.LongToIntFunction;
 
 public class Shot extends ObjetoDeJuego {
-
-    public Shot(int x, int y, ID id){
+    double velY;
+    public Shot(int x, int y, ID id, double timePressed){
         super(x, y, id);
-        Random random = new Random();
         velX = 0;
-        velY = 5 + random.nextInt(15);
+        timePressed /= 2000;
+        if (timePressed >= 50) timePressed = 50;
+        if (timePressed < 5) timePressed = 5;
+        velY = timePressed;
     }
     @Override
     public void thick() {
