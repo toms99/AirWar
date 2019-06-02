@@ -1,5 +1,6 @@
 package GameProcess;
 
+import GameObjects.Cargador;
 import GameObjects.ID;
 import GameObjects.ObjetoDeJuego;
 import GameObjects.Shot;
@@ -12,7 +13,6 @@ public class KeyInput extends KeyAdapter {
     private Handler handler;
     private int ultimaTecla = -1;
     double time;
-
 
     public KeyInput(Handler handler){
         this.handler = handler;
@@ -27,6 +27,10 @@ public class KeyInput extends KeyAdapter {
                 // key events para Jugador
                 if (tecla == KeyEvent.VK_SPACE) {
                     time += (System.currentTimeMillis()/1000000000);
+                    handler.addObjeto(new Cargador(objeto.getX() - 20, objeto.getY() - 20, ID.CargadorIzquierdo, handler));
+                    handler.addObjeto(new Cargador(objeto.getX() + 10 , objeto.getY() - 20, ID.CargadorIzquierdo, handler));
+                    handler.addObjeto(new Cargador(objeto.getX() + 60, objeto.getY() - 20, ID.CargadorDerecho, handler));
+                    handler.addObjeto(new Cargador(objeto.getX() + 100, objeto.getY() - 20, ID.CargadorDerecho, handler));
                 }
                 ultimaTecla = tecla;
             }

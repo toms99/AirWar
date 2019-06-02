@@ -1,8 +1,10 @@
 package GameObjects;
 
 import GUI.MediaSources;
+import GameProcess.Handler;
 import Logic.BasePosition;
 import Logic.Node;
+import Logic.SingletonGraph;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -11,11 +13,14 @@ import java.util.LinkedList;
 import java.util.Random;
 
 public class Base extends ObjetoDeJuego {
+    Handler handler;
     Random random = new Random();
     MediaSources mediaSources = new MediaSources();
     BasePosition generadorDePosicion = new BasePosition();
     Node nodo;
     private int intID = -1;
+    private int nivel = 1;
+    int tiempoParaNuevoAvion = random.nextInt(20*nivel);
 
     ArrayList<Integer> posicionesTransparentes = generadorDePosicion.getPosicionesTransparentes();
     ArrayList<Integer> posicionesPintadas = generadorDePosicion.getPosicionesPintadas();
@@ -29,13 +34,14 @@ public class Base extends ObjetoDeJuego {
      * @param y
      * @param id
      */
-    public Base(int x, int y, ID id) {
+    public Base(int x, int y, ID id, Handler handler) {
         super(x, y, id);
         velX = 0;
         velY = 0;
         this.definirPosicionesDeBase();
 
-        nodo = new Node(intID, id, x, y);
+        nodo = new Node(intID+=1, id, x, y);
+        SingletonGraph.getInstance().addNode(nodo);
 
     }
 
@@ -75,6 +81,12 @@ public class Base extends ObjetoDeJuego {
 
     @Override
     public void thick() {
+        if (tiempoParaNuevoAvion <= 0){
+            ObjetoDeJuego avionEnemigo = new Enemy(x, y, ID.Enemigo);
+            handler.addObjeto(avionEnemigo);
+            tiempoParaNuevoAvion = random.nextInt(20*nivel);
+        }
+        tiempoParaNuevoAvion -= 1;
 
     }
 

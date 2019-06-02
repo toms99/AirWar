@@ -73,22 +73,19 @@ public class SingletonGraph {
      *
      * Default Graph constructor
      */
-    private SingletonGraph() {
+    private SingletonGraph(){
+
+        //Prevent form the reflection api.
         if (graph != null){
-            throw new RuntimeException("Use  metodo getInstance() para obtener la unica instacia existente.");
-        } else {
-            SingletonGraph.getInstance().initGraph();
+            throw new RuntimeException("Use getInstance() method to get the single instance of this class.");
         }
     }
 
-    public static SingletonGraph getInstance() {
-        if (graph == null) { //Si no se ha crado la instancia, cree una.
-            synchronized (SingletonGraph.class) {
-                if (graph == null) {
-                    graph = new SingletonGraph();
-                }
-            }
+    public static SingletonGraph getInstance(){
+        if (graph == null){ //if there is no instance available... create new one
+            graph = new SingletonGraph();
         }
+
         return graph;
     }
 

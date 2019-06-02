@@ -13,7 +13,7 @@ public class Shot extends ObjetoDeJuego {
         velX = 0;
         timePressed /= 2000;
         if (timePressed >= 50) timePressed = 50;
-        if (timePressed < 5) timePressed = 5;
+        if (timePressed < 2) timePressed = 2;
         velY = timePressed;
     }
     @Override
