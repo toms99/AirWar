@@ -44,7 +44,7 @@ public class KeyInput extends KeyAdapter {
             ObjetoDeJuego objeto = handler.getObjetosEnJuego().get(i);
             if (objeto.getId() == ID.Jugador) {
                 if (tecla == KeyEvent.VK_SPACE && ultimaTecla == tecla){
-                    ObjetoDeJuego bala = new Shot(objeto.getX(), objeto.getY(), ID.Bala, time);
+                    ObjetoDeJuego bala = new Shot(objeto.getX(), objeto.getY(), ID.Bala, time, handler);
                     handler.addObjeto(bala);
                     time = 0;
                 }

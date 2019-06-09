@@ -29,9 +29,10 @@ public class Enemy extends ObjetoDeJuego {
         for (int i = 0; i < handler.getObjetosEnJuego().size(); i++){
             ObjetoDeJuego objeto = handler.getObjetosEnJuego().get(i);
             if (objeto.getId() == ID.Bala){
-                //if (this.getX())
-                if (objeto.getY() <= this.getY() + 20){
-                    handler.removeObjeto(this);
+                if (this.getX() + 32 <= objeto.getX() + 68 && this.getX() + 32 >= objeto.getX()){
+                    if (objeto.getY() <= this.getY() + 20){
+                        handler.removeObjeto(this);
+                    }
                 }
             }
 
