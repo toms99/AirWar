@@ -39,7 +39,7 @@ public class Base extends ObjetoDeJuego {
         velX = 0;
         velY = 0;
         this.definirPosicionesDeBase();
-
+        this.handler = handler;
         nodo = new Node(intID+=1, id, x, y);
         SingletonGraph.getInstance().addNode(nodo);
 
@@ -81,10 +81,10 @@ public class Base extends ObjetoDeJuego {
 
     @Override
     public void thick() {
-        if (tiempoParaNuevoAvion <= 0){
-            //ObjetoDeJuego avionEnemigo = new Enemy(x, y, ID.Enemigo);
-            handler.addObjeto(new Enemy(x, y, ID.Enemigo));
-            tiempoParaNuevoAvion = random.nextInt(20*nivel);
+        if (tiempoParaNuevoAvion <= 0) {
+            ObjetoDeJuego avionEnemigo = new Enemy(x, y, ID.Enemigo, handler);
+            handler.addObjeto(avionEnemigo);
+            tiempoParaNuevoAvion = 500 + random.nextInt(100 * nivel);
         }
         tiempoParaNuevoAvion -= 1;
 
