@@ -82,8 +82,8 @@ public class Base extends ObjetoDeJuego {
     @Override
     public void thick() {
         if (tiempoParaNuevoAvion <= 0){
-            ObjetoDeJuego avionEnemigo = new Enemy(x, y, ID.Enemigo);
-            handler.addObjeto(avionEnemigo);
+            //ObjetoDeJuego avionEnemigo = new Enemy(x, y, ID.Enemigo);
+            handler.addObjeto(new Enemy(x, y, ID.Enemigo));
             tiempoParaNuevoAvion = random.nextInt(20*nivel);
         }
         tiempoParaNuevoAvion -= 1;

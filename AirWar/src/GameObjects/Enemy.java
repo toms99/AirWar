@@ -15,10 +15,14 @@ public class Enemy extends ObjetoDeJuego {
      */
     public Enemy(int x, int y, ID id) {
         super(x, y, id);
+        velX = 0;
+        velY = 0;
     }
 
     @Override
     public void thick() {
+        x = velX;
+        y = velY;
 
     }
 
