@@ -6,6 +6,7 @@ import GameObjects.Base;
 import GameObjects.ID;
 import GameObjects.Jugador;
 import Logic.BasePosition;
+import Logic.SingletonGraph;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -41,6 +42,8 @@ public class Juego extends Canvas implements Runnable {
         handler.addObjeto(new Base(0,0,ID.Portaaviones, handler));
         handler.addObjeto(new Base(0,0,ID.Portaaviones, handler));
         handler.addObjeto(new Base(0,0,ID.Portaaviones, handler));
+
+        SingletonGraph.getInstance();
     }
 
     public synchronized void start(){

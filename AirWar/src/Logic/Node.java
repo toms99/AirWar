@@ -16,6 +16,7 @@ public class Node {
   private int id,x,y;
   private ID name;
 
+
   /**
    * Constructor de un nodo
    * @param id : Identificador del nodo en la matriz de adyacencia

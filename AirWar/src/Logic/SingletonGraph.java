@@ -19,6 +19,7 @@ public class SingletonGraph {
     private Node[] nodes = new Node[vertices];
     private Map<String,Waze> allPaths = new HashMap<>();
 
+
     /*
      *----------------------------------------------------------------------------
      *                             GET METHODS
@@ -84,6 +85,8 @@ public class SingletonGraph {
     public static SingletonGraph getInstance(){
         if (graph == null){ //if there is no instance available... create new one
             graph = new SingletonGraph();
+            graph.initGraph();
+
         }
 
         return graph;
