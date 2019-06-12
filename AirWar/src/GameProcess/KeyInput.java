@@ -32,6 +32,8 @@ public class KeyInput extends KeyAdapter {
                     handler.addObjeto(new Cargador(objeto.getX() + 60, objeto.getY() - 20, ID.CargadorDerecho, handler));
                     handler.addObjeto(new Cargador(objeto.getX() + 100, objeto.getY() - 20, ID.CargadorDerecho, handler));
                 }
+                if (tecla == KeyEvent.VK_LEFT) objeto.setVelX(-10);
+                if (tecla == KeyEvent.VK_RIGHT) objeto.setVelX(10);
                 ultimaTecla = tecla;
             }
         }
@@ -48,6 +50,8 @@ public class KeyInput extends KeyAdapter {
                     handler.addObjeto(bala);
                     time = 0;
                 }
+                if (tecla == KeyEvent.VK_LEFT) objeto.setVelX(0);
+                if (tecla == KeyEvent.VK_RIGHT) objeto.setVelX(0);
             }
         }
         ultimaTecla = -1;
