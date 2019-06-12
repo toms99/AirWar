@@ -37,13 +37,13 @@ public class Juego extends Canvas implements Runnable {
         new Window(ancho, altura, "AirWar", this);
 
         handler.addObjeto(new Jugador(50,getAltura() - 125,ID.Jugador));
-        handler.addObjeto(new Base(0,0,ID.Aeropuerto, handler));
-        handler.addObjeto(new Base(0,0,ID.Aeropuerto, handler));
-        handler.addObjeto(new Base(0,0,ID.Portaaviones, handler));
-        handler.addObjeto(new Base(0,0,ID.Portaaviones, handler));
-        handler.addObjeto(new Base(0,0,ID.Portaaviones, handler));
+        handler.addObjeto(new Base(0,0, 0, ID.Aeropuerto, handler));
+        handler.addObjeto(new Base(0,0, 1, ID.Aeropuerto, handler));
+        handler.addObjeto(new Base(0,0, 2, ID.Portaaviones, handler));
+        handler.addObjeto(new Base(0,0, 3, ID.Portaaviones, handler));
+        handler.addObjeto(new Base(0,0, 4, ID.Portaaviones, handler));
 
-        SingletonGraph.getInstance();
+        GraphProcessing.processGraph();
     }
 
     public synchronized void start(){

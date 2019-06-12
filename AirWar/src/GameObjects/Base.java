@@ -17,8 +17,7 @@ public class Base extends ObjetoDeJuego {
     Random random = new Random();
     MediaSources mediaSources = new MediaSources();
     BasePosition generadorDePosicion = new BasePosition();
-    Node nodo;
-    private int intID = -1;
+    int IDint;
     private int nivel = 1;
     int tiempoParaNuevoAvion = random.nextInt(20*nivel);
 
@@ -34,21 +33,19 @@ public class Base extends ObjetoDeJuego {
      * @param y
      * @param id
      */
-    public Base(int x, int y, ID id, Handler handler) {
+    public Base(int x, int y, int IDint,  ID id, Handler handler) {
         super(x, y, id);
         velX = 0;
         velY = 0;
         this.definirPosicionesDeBase();
         this.handler = handler;
-        nodo = new Node(intID+=1, id, x, y);
+        this.IDint = IDint;
+
+        Node nodo = new Node(IDint, id, this.getX(), this.getY());
         SingletonGraph.getInstance().addNode(nodo);
 
     }
 
-    private int definirID(){
-        intID++;
-        return intID;
-    }
     /**
      * Encargado de definir las posiciones random de un objeto base o portaavion
      * a partir de otra funcion que las establece. Este solo las define segun ID.

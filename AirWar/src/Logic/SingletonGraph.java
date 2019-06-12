@@ -86,7 +86,6 @@ public class SingletonGraph {
         if (graph == null){ //if there is no instance available... create new one
             graph = new SingletonGraph();
             graph.initGraph();
-
         }
 
         return graph;
@@ -161,10 +160,11 @@ public class SingletonGraph {
 
     /**
      * Este método ejecuta el algoritmo Floyd-Warshall para encontrar todas las rutas entre los vértices del grafo.
-     * @param distances : Adjacency matrix of the graph
-     * @param vertex : Number of vertices in the graph
+     *
      */
-    public void floydWarshall(int[][] distances, int vertex){
+    public void floydWarshall(){
+        int[][] distances = this.matrix;
+        int vertex = this.vertices;
         double[][] distance = new double[vertex][vertex];
         for (double[] row : distance) {
             Arrays.fill(row,Double.POSITIVE_INFINITY);
@@ -228,11 +228,12 @@ public class SingletonGraph {
                     // Create a new Path to put it in the map of routes
                     Waze tmp = new Waze(path, dist);
                     allPaths.put(pathId, tmp);
-                    System.out.println(pathId+" "+path+" ("+dist+")");
+                    //System.out.println(pathId+" "+path+" ("+dist+")");
                 }
 
             }
         }
+
     }
 
 }
