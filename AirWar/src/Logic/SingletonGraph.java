@@ -1,10 +1,8 @@
 package Logic;
 
-import java.util.Map;
+import java.util.*;
 
 import static java.lang.String.format;
-import java.util.Arrays;
-import java.util.HashMap;
 
 public class SingletonGraph {
 
@@ -18,6 +16,8 @@ public class SingletonGraph {
     private int matrix[][] = new int[vertices][vertices];
     private Node[] nodes = new Node[vertices];
     private Map<String,Waze> allPaths = new HashMap<>();
+    private static List<Integer> stops = new LinkedList<>();
+    private String actualPath;
 
 
     /*
@@ -114,7 +114,7 @@ public class SingletonGraph {
             sMatrix += "\n";
         }
         return sMatrix;
-    }
+        }
 
     /**
      * Hace print de los Nodes
@@ -228,12 +228,47 @@ public class SingletonGraph {
                     // Create a new Path to put it in the map of routes
                     Waze tmp = new Waze(path, dist);
                     allPaths.put(pathId, tmp);
-                    //System.out.println(pathId+" "+path+" ("+dist+")");
                 }
 
             }
         }
+        System.out.println(allPaths.toString());
 
+    }
+
+    //@Path("/generateTrip/{from}")
+    public String setTravel(/*@PathParam("from")*/ int from, int toId, int stop) {
+        String pathId = String.format("%s-%s",from,toId);
+        //this.fromId = from;
+        this.actualPath = allPaths.get(pathId).getPath();
+        //this.actPosition = from;
+        this.stops.add(stop);
+        String result = this.pathUpdate(from, toId);
+        return result;
+
+    }
+
+    private String pathUpdate(int fromId, int toId) {
+
+        System.out.println(stops.toString());
+        int tmpFrom = fromId;
+        int tmpTo = stops.get(0);
+
+        String momentPath = "";
+        for(int i = 0; i < stops.size(); i++) {
+            String pathId = String.format("%s-%s",tmpFrom,tmpTo);
+            momentPath += allPaths.get(pathId).getPath()+"/";
+            tmpFrom = stops.get(i);
+            if(i != stops.size()-1) {
+                tmpTo = stops.get(i+1);
+            }
+        }
+        String pathId = String.format("%s-%s",tmpTo, toId);
+        momentPath += allPaths.get(pathId).getPath()+"/";
+        this.actualPath = momentPath;
+
+        System.out.println(momentPath);
+        return momentPath;
     }
 
 }

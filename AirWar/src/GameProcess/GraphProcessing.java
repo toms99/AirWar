@@ -21,6 +21,8 @@ public class GraphProcessing {
         SingletonGraph.getInstance().addEdge(nodo3, nodo5, distanceCalc(nodo3, nodo5));
 
         SingletonGraph.getInstance().floydWarshall();
+
+        String travel1 = SingletonGraph.getInstance().setTravel(4, 2,1);
     }
 
     private static int distanceCalc(Node n1, Node n2){

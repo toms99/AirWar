@@ -5,11 +5,12 @@ import GameProcess.Handler;
 import Logic.BasePosition;
 import Logic.Node;
 import Logic.SingletonGraph;
+import Logic.Waze;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Map;
 import java.util.Random;
 
 public class Base extends ObjetoDeJuego {
@@ -25,6 +26,8 @@ public class Base extends ObjetoDeJuego {
     ArrayList<Integer> posicionesPintadas = generadorDePosicion.getPosicionesPintadas();
 
     BufferedImage mapa = mediaSources.addImage("/Map.png");
+
+    Map<String, Waze> paths;
 
 
     /**
@@ -75,11 +78,17 @@ public class Base extends ObjetoDeJuego {
         }
     }
 
+    public void setRoute(){
+        paths =  SingletonGraph.getInstance().getAllPaths();
+        String routes = paths.toString();
+        paths.get(2).toString();
+    }
+
 
     @Override
     public void thick() {
         if (tiempoParaNuevoAvion <= 0) {
-            ObjetoDeJuego avionEnemigo = new Enemy(x, y, ID.Enemigo, handler);
+            ObjetoDeJuego avionEnemigo = new Enemy(x, y, ID.Enemigo, IDint, handler);
             handler.addObjeto(avionEnemigo);
             tiempoParaNuevoAvion = 500 + random.nextInt(100 * nivel);
         }
