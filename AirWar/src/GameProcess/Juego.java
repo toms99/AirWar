@@ -24,14 +24,19 @@ public class Juego extends Canvas implements Runnable {
     private Thread hilo;
     private boolean corriendo = false;
 
-    private Handler handler;
+    public static Handler getHandler() {
+        return handler;
+    }
+
+    private static Handler handler;
     MediaSources mediaSources = new MediaSources();
 
     /**
      * Constructor
      */
     public Juego(){
-        handler = new Handler();
+
+        this.handler = new Handler();
         this.addKeyListener(new KeyInput(handler));
 
         new Window(ancho, altura, "AirWar", this);
@@ -125,7 +130,14 @@ public class Juego extends Canvas implements Runnable {
 
     public static void main(String[] args) {
         new Juego();
+        //Arduino();
     }
+     public static void Arduino(){
+            ArduinoControl arduino = new ArduinoControl();
+            ArduinoControl.detectPort();
+            String newValue = ArduinoControl.portList.get(0);
+            arduino.connectArduino(newValue);
+     }
 
     public static int getAncho() {
         return ancho;

@@ -14,13 +14,24 @@ public class KeyInput extends KeyAdapter {
     private int ultimaTecla = -1;
     double time;
 
+    static int eventoArduino;
+
     public KeyInput(Handler handler){
         this.handler = handler;
     }
 
+    public static void ArduinoReceptor(String tecla){
+        if (tecla == "s") eventoArduino = KeyEvent.VK_SPACE;
+        if (tecla == "i") eventoArduino = KeyEvent.VK_LEFT;
+        if (tecla == "d") eventoArduino = KeyEvent.VK_RIGHT;
+    }
+
     public void keyPressed(KeyEvent event){
         int tecla = event.getKeyCode();
+        KeyControl(tecla);
+    }
 
+    public void KeyControl(int tecla){
         for(int i = 0; i < handler.getObjetosEnJuego().size(); i++){
             ObjetoDeJuego objeto = handler.getObjetosEnJuego().get(i);
             if (objeto.getId() == ID.Jugador) {
@@ -32,16 +43,22 @@ public class KeyInput extends KeyAdapter {
                     handler.addObjeto(new Cargador(objeto.getX() + 60, objeto.getY() - 20, ID.CargadorDerecho, handler));
                     handler.addObjeto(new Cargador(objeto.getX() + 100, objeto.getY() - 20, ID.CargadorDerecho, handler));
                 }
-                if (tecla == KeyEvent.VK_LEFT) objeto.setVelX(-10);
-                if (tecla == KeyEvent.VK_RIGHT) objeto.setVelX(10);
+                if (tecla == KeyEvent.VK_LEFT) objeto.setVelX(-5);
+                if (tecla == KeyEvent.VK_RIGHT) objeto.setVelX(5);
                 ultimaTecla = tecla;
             }
         }
+       //ArduinoSuperior(ultimaTecla);
     }
 
     public void keyReleased(KeyEvent event){
         int tecla = event.getKeyCode();
+        ArduinoSuperior(tecla);
 
+    }
+
+
+    public void ArduinoSuperior(int tecla){
         for(int i = 0; i < handler.getObjetosEnJuego().size(); i++) {
             ObjetoDeJuego objeto = handler.getObjetosEnJuego().get(i);
             if (objeto.getId() == ID.Jugador) {

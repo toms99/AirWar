@@ -29,21 +29,21 @@ public class Enemy extends ObjetoDeJuego {
         velX = 0;
         velY = 0;
         this.handler = handler;
-        int randomGoal = new Random().nextInt(4);
-        int randomStop = new Random().nextInt(4);
-        path = SingletonGraph.getInstance().setTravel(IDint, randomGoal, randomStop);
-        char[] pathArray = path.toCharArray();
-        for (int i =0; i<pathArray.length; i++){
-            if (pathArray[i] == '-' || pathArray[i] == '/'){
-                route.add(Character.getNumericValue(pathArray[i-1]));
-            }
-        }
+//        int randomGoal = new Random().nextInt(4);
+//        int randomStop = new Random().nextInt(4);
+//        path = SingletonGraph.getInstance().setTravel(IDint, randomGoal, randomStop);
+//        char[] pathArray = path.toCharArray();
+//        for (int i =0; i<pathArray.length; i++){
+//            if (pathArray[i] == '-' || pathArray[i] == '/'){
+//                route.add(Character.getNumericValue(pathArray[i-1]));
+//            }
+//        }
     }
 
     @Override
     public void thick() {
         if (toInit <100) {toInit += 1;}
-        else {travelTo(route.get(0)); route.remove(0);}
+        //else {travelTo(route.get(0)); route.remove(0);}
 
         for (int i = 0; i < handler.getObjetosEnJuego().size(); i++){
             ObjetoDeJuego objeto = handler.getObjetosEnJuego().get(i);
